@@ -18,7 +18,7 @@ has ua => (
     is => 'ro',
     default => sub {
         Furl->new(
-            agent => "Net::Groonga::HTTP",
+            agent => "Net::Groonga::HTTP/$VERSION",
             timeout => 3
         )
     }
@@ -66,7 +66,6 @@ sub load {
     return $self->call('load', %args);
 }
 
-
 1;
 __END__
 
@@ -92,6 +91,63 @@ Net::Groonga::HTTP - Client library for Groonga httpd.
 Net::Groonga::HTTP is a client library for Groonga http server.
 
 Groonga is a fast full text search engine. Please look L<http://groonga.org/>.
+
+=head1 CONSTRUCTOR
+
+    Net::Groonga::HTT->new(%args);
+
+You can create instance with following arguments:
+
+=over 4
+
+=item end_point :Str
+
+API end point URL for Groonga httpd.
+
+Example:
+
+    Net::Groonga::HTTP->new(end_point => 'http://127.0.0.1:10041/d/');
+
+=item ua : Furl
+
+Instance of Furl to acces Groonga httpd.
+
+Example:
+
+    Net::Groonga::HTTP->new(ua => Furl->new());
+
+=back
+
+=head1 METHODS
+
+=over 4
+
+=item $groonga->call($function, %args)
+
+Call a http server. Function name is C<< $function >>. Pass the C<< %args >.
+
+This method returns instance of L<Net::Groonga::HTTP::Response>.
+
+=item $groonga->load(%args)
+
+    $groonga->load(
+        table => 'Entry',
+        values => \@values,
+    );
+
+Load the data to database. This method encodes I<values> to JSON automatically, if it's arrayref.
+
+=item $groonga->select(%args)
+
+=item $groonga->status(%args)
+
+=item $groonga->select(%args)
+
+=item $groonga->delete(%args)
+
+You can use these methods if you are lazy.
+
+=back
 
 =head1 LICENSE
 
