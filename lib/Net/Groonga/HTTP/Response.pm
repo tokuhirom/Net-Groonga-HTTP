@@ -126,13 +126,15 @@ The arguments for executed function.
 
 =item $res->http_response() :Object
 
-Executed HTTP response ojbect from L<Furl>.
+Executed HTTP response object from L<Furl>.
 
 =back
 
 =head1 METHODS FOR ANALYZING CONTENT-BODY
 
 Following methods return method dies if the response is not I<200 OK>.
+
+=over 4
 
 =item $res->data() :Object
 
@@ -160,7 +162,7 @@ Shorthand for C<< $res->data->[1] >>.
 
 =item $res->pager() :Net::Groonga::Pager
 
-Create pager object if it's avialable.
+Create pager object if it's available.
 
 It's only useful if the function is B<select>.
 
