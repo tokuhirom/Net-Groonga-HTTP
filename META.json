@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Client library for Groonga httpd.",
    "author" : [
       "tokuhirom <tokuhirom@gmail.com>"
    ],
@@ -57,5 +57,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/tokuhirom/Net-Groonga-HTTP/issues"
+      },
+      "homepage" : "https://github.com/tokuhirom/Net-Groonga-HTTP",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/tokuhirom/Net-Groonga-HTTP.git",
+         "web" : "https://github.com/tokuhirom/Net-Groonga-HTTP"
+      }
+   },
    "version" : "0.01"
 }

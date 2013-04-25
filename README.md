@@ -1,6 +1,6 @@
 # NAME
 
-Net::Groonga::HTTP - It's new $module
+Net::Groonga::HTTP - Client library for Groonga httpd.
 
 # SYNOPSIS
 
@@ -16,7 +16,7 @@ Net::Groonga::HTTP - It's new $module
 
 # DESCRIPTION
 
-Net::Groonga::HTTP is ...
+Net::Groonga::HTTP is a client library for Groonga http server.
 
 # LICENSE
 

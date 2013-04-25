@@ -5,12 +5,6 @@ use warnings;
 
 our $VERSION = "0.01";
 
-
-package Net::Groonga::HTTP;
-use strict;
-use warnings;
-use utf8;
-
 use JSON::XS qw(encode_json decode_json);
 use Furl;
 use URI;
@@ -19,7 +13,16 @@ use Net::Groonga::HTTP::Response;
 use Mouse;
 
 has end_point => ( is => 'ro' );
-has ua => ( is => 'ro', default => sub { Furl->new(agent => "Net::Groonga::HTTP") });
+
+has ua => (
+    is => 'ro',
+    default => sub {
+        Furl->new(
+            agent => "Net::Groonga::HTTP",
+            timeout => 3
+        )
+    }
+);
 
 no Mouse;
 
@@ -71,7 +74,7 @@ __END__
 
 =head1 NAME
 
-Net::Groonga::HTTP - It's new $module
+Net::Groonga::HTTP - Client library for Groonga httpd.
 
 =head1 SYNOPSIS
 
@@ -86,7 +89,7 @@ Net::Groonga::HTTP - It's new $module
 
 =head1 DESCRIPTION
 
-Net::Groonga::HTTP is ...
+Net::Groonga::HTTP is a client library for Groonga http server.
 
 =head1 LICENSE
 

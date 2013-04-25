@@ -102,4 +102,76 @@ sub rows {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Net::Groonga::HTTP::Response - Response object for Net::Groonga::HTTP
+
+=head1 DESCRIPTION
+
+This class is a response class for L<Net::Groonga::HTTP>.
+
+=head1 BASIC METHODS
+
+=over 4
+
+=item $res->function() :Str
+
+The name of executed function.
+
+=item $res->args() : HashRef
+
+The arguments for executed function.
+
+=item $res->http_response() :Object
+
+Executed HTTP response ojbect from L<Furl>.
+
+=back
+
+=head1 METHODS FOR ANALYZING CONTENT-BODY
+
+Following methods return method dies if the response is not I<200 OK>.
+
+=item $res->data() :Object
+
+JSON decoded content body.
+
+=item $res->return_code() :Int
+
+Shorthand for C<< $res->data->[0]->[0] >>.
+
+Groonga's return code. It's not HTTP status code.
+
+=item $res->starttime() :Int
+
+Shorthand for C<< $res->data->[0]->[2] >>.
+
+=item $res->elapsed_time() :Int
+
+Shorthand for C<< $res->data->[0]->[2] >>.
+
+Elapsed time.
+
+=item $res->result() :Int
+
+Shorthand for C<< $res->data->[1] >>.
+
+=item $res->pager() :Net::Groonga::Pager
+
+Create pager object if it's avialable.
+
+It's only useful if the function is B<select>.
+
+The object instance of L<Net::Groonga::Pager>.
+
+=item @rows = $res->rows()
+
+Create list of hashrefs from JSON content.
+
+It's only useful if the function si B<select>.
+
+=back
+
 

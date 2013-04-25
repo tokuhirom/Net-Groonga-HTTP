@@ -17,3 +17,35 @@ sub has_next {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Net::Groonga::Pager - Pager object for Net::Groonga::HTTP
+
+=head1 METHODS
+
+=over 4
+
+=item $pager->offset() :Int
+
+Offset clause for searching.
+
+=item $pager->limit() :Int
+
+Limit clause for searching.
+
+=item $pager->total_entries() :Int
+
+The number of total entries for searching result.
+
+=item $pager->has_next() :Int
+
+Return true if next page is available.
+
+=back
+
+=head1 AUTHOR
+
+Tokuhiro Matsuno
+
