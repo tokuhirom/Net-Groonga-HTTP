@@ -63,6 +63,8 @@ You can create instance with following arguments:
 - $groonga->status(%args)
 - $groonga->select(%args)
 - $groonga->delete(%args)
+- $groonga->column\_create(%args)
+- $groonga->dump(%args)
 
     You can use these methods if you are lazy.
 
