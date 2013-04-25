@@ -38,30 +38,35 @@ sub is_success {
 sub _build_data {
     my $self = shift;
     return undef if $self->http_response->code ne 200;
+    return $self->http_response->content if $self->function eq 'dump';
     decode_json($self->http_response->content);
 }
 
 sub return_code {
     my $self = shift;
     Carp::croak(sprintf("%s:%s", $self->function, $self->http_response->status_line)) unless $self->data;
+    return 0 if $self->function eq 'dump';
     $self->data->[0]->[0];
 }
 
 sub start_time {
     my $self = shift;
     Carp::croak(sprintf("%s:%s", $self->function, $self->http_response->status_line)) unless $self->data;
+    return undef if $self->function eq 'dump';
     $self->data->[0]->[1];
 }
 
 sub elapsed_time {
     my $self = shift;
     Carp::croak(sprintf("%s:%s", $self->function, $self->http_response->status_line)) unless $self->data;
+    return undef if $self->function eq 'dump';
     $self->data->[0]->[2];
 }
 
 sub result {
     my $self = shift;
-    Carp::croak(sprintf("%s:%s", $self->function, $self->http_response->status_line)) unless $self->data;
+    Carp::croak(sprintf("%s:%s:%s", $self->function, $self->http_response->status_line, substr($self->http_response->content, 0, 256))) unless $self->data;
+    return $self->data if $self->function eq 'dump';
     $self->data->[1];
 }
 
@@ -69,6 +74,10 @@ sub pager {
     my $self = shift;
     return unless $self->data;
     return unless $self->return_code == 0;
+    return unless ref $self->data eq 'ARRAY';
+    return unless ref $self->data->[1] eq 'ARRAY';
+    return unless ref $self->data->[1]->[0] eq 'ARRAY';
+    return unless ref $self->data->[1]->[0]->[0] eq 'ARRAY';
 
     my $total_entries = $self->data->[1]->[0]->[0]->[0];
     my $limit  = $self->args->{limit}  || 10;

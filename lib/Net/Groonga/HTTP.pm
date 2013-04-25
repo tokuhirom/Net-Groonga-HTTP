@@ -5,14 +5,14 @@ use warnings;
 
 our $VERSION = "0.02";
 
-use JSON::XS qw(encode_json decode_json);
+use JSON::XS qw(encode_json);
 use Furl;
 use URI;
 use Net::Groonga::HTTP::Response;
 
 use Mouse;
 
-has end_point => ( is => 'ro' );
+has end_point => ( is => 'ro', required => 1 );
 
 has ua => (
     is => 'ro',
@@ -48,9 +48,11 @@ sub call {
 
 my @functions = qw(
     table_create
+    column_create
     status
     select
     delete
+    dump
 );
 for my $function (@functions) {
     no strict 'refs';
@@ -144,6 +146,10 @@ Load the data to database. This method encodes I<values> to JSON automatically, 
 =item $groonga->select(%args)
 
 =item $groonga->delete(%args)
+
+=item $groonga->column_create(%args)
+
+=item $groonga->dump(%args)
 
 You can use these methods if you are lazy.
 
