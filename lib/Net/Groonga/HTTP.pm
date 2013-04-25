@@ -91,6 +91,8 @@ Net::Groonga::HTTP - Client library for Groonga httpd.
 
 Net::Groonga::HTTP is a client library for Groonga http server.
 
+Groonga is a fast full text search engine. Please look L<http://groonga.org/>.
+
 =head1 LICENSE
 
 Copyright (C) tokuhirom.
