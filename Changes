@@ -2,6 +2,10 @@ Revision history for Perl extension Net-Groonga-HTTP
 
 {{$NEXT}}
 
+0.02 2013-04-25T08:05:35Z
+
+    - Documentation enhancements.
+
 0.01 2013-04-25T07:38:23Z
 
     - original version

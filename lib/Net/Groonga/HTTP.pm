@@ -3,7 +3,7 @@ use 5.008005;
 use strict;
 use warnings;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 use JSON::XS qw(encode_json decode_json);
 use Furl;
@@ -110,7 +110,7 @@ Example:
 
 =item ua : Furl
 
-Instance of Furl to acces Groonga httpd.
+Instance of Furl to access Groonga httpd.
 
 Example:
 
@@ -122,9 +122,9 @@ Example:
 
 =over 4
 
-=item $groonga->call($function, %args)
+=item C<< $groonga->call($function, %args) >>
 
-Call a http server. Function name is C<< $function >>. Pass the C<< %args >.
+Call a http server. Function name is C<< $function >>. Pass the C<< %args >>.
 
 This method returns instance of L<Net::Groonga::HTTP::Response>.
 
